@@ -18,7 +18,7 @@ public class parent extends person{
     }
     @Override
     public void Intro(){
-        System.out.printf("I am %s, I am %d, I make %f, and I am the parent of %s",name,age,netIncome,child.name);
+        System.out.printf("I am %s, I am %d, I make %f, and I am the parent of %s.%n",name,age,netIncome,child.name);
     }
 }
 

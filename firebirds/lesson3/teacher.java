@@ -16,7 +16,7 @@ public class teacher extends person{
     }
     @Override
     public void Intro(){
-        System.out.printf("I am %s, I am %d, my netIncome is %f and I specialise in %s",name,age,netIncome,education);
+        System.out.printf("I am %s, I am %d, my netIncome is %f and I specialise in %s.%n",name,age,netIncome,education);
     }
     public void report(int grades, parent par){
         if(amiability >=8){

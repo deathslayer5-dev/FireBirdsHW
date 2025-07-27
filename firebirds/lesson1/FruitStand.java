@@ -22,7 +22,7 @@ public class FruitStand{
                     System.out.println("Invalid input, try again.");
                     inputf = scan.nextLine();
                 }
-                System.out.printf("That would be %f dollars%n", fruits.get(inputf));
+                System.out.printf("That would be %f.2 dollars%n", fruits.get(inputf));
                 break;
             case 'b':
                for(Map.Entry<String,Float> entry : beverage.entrySet()){
@@ -34,7 +34,7 @@ public class FruitStand{
                     System.out.println("Invalid input, try again.");
                     inputb = scan.nextLine();
                 }
-                System.out.printf("That would be %f dollars%n", beverage.get(inputb));
+                System.out.printf("That would be %f.2 dollars%n", beverage.get(inputb));
                 break;
         }
     }
