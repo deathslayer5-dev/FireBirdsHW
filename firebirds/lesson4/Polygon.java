@@ -1,4 +1,4 @@
-package polygons;
+package lesson4;
 import java.lang.Math;
 abstract class polygon{
     protected int sides;
@@ -8,16 +8,30 @@ abstract class polygon{
         this.sides=sides;
         this.sideLengths = sideLengths;
     }
+    public polygon(int sides, int[] Lengths){
+        this.sides=sides;
+        this.sideLengths = sideLengths;
+    }
     public abstract double getArea();
     public abstract double getPerimeter();
-
+    public abstract int getArea(int i);
+    public abstract int getPerimeter(int i);
     public int getSidesNo(){
         return sides;
+    }
+    public double getArea(boolean b, double h){
+        return getArea()*h;
+    }
+    public int getArea(boolean b, int h){
+        return getArea(1)*h;
     }
 }
 class triangle extends polygon{
     public triangle(double a, double b, double c){
         super(3,new double[]{a,b,c});
+    }
+    public triangle(int a, int b, int c){
+        super(3,new int[]{a,b,c});
     }
     @Override
     public double getPerimeter(){
@@ -27,6 +41,21 @@ class triangle extends polygon{
     public double getArea(){
         double s =getPerimeter()/2;
         return Math.sqrt(s*(s-sideLengths[0])*(s-sideLengths[1])*(s-sideLengths[2]));
+    }
+   @Override
+    public int getPerimeter(int i){
+        return (int) (sideLengths[0] + sideLengths[1]+sideLengths[2]);
+    }
+    @Override
+    public int getArea(int i){
+        int s =getPerimeter(1)/2;
+        return (int) Math.sqrt(s*(s-sideLengths[0])*(s-sideLengths[1])*(s-sideLengths[2]));
+    }
+    public double findThirdAngle(double angle1,double angle2){
+        return 180 - (angle1+angle2);
+    }
+    public double findThirdAngle(double angle1,double angle2, boolean b){
+        return Math.PI-(angle1+angle2);
     }
 }
 class isoscelesTriangle extends triangle{
@@ -88,6 +117,19 @@ class quadrilateral extends polygon{
         double s =getPerimeter()/2;
         return Math.sqrt((s-lengths[0])*(s-lengths[1])*(s-lengths[2])*(s-lengths[3]));
     }   
+    @Override
+    public int getPerimeter(int i){
+        int sum = 0;
+        for(double d:lengths){
+            sum+= (int)d;
+        }
+        return sum;
+    }
+    @Override 
+    public int getArea(int i){
+        int s = getPerimeter(1)/2;
+        return (int) Math.sqrt((s-lengths[0])*(s-lengths[1])*(s-lengths[2])*(s-lengths[3]));
+    }
 }
 class rectangle extends quadrilateral{
     private double length;
@@ -111,6 +153,10 @@ class square extends rectangle{
     @Override
     public double  getArea(){
         return length*length;
+    }
+    @Override
+    public int getArea(int i){
+        return (int)length * (int)length;
     }
 }
 class kite extends quadrilateral{
